@@ -4,6 +4,7 @@
     "description": "Node API Challenge",
     "main": "index.js",
     "scripts": {
+        "start": "node index.js",
         "test": "cross-env NODE_ENV=testing jest --watch --verbose --runInBand --silent"
     },
     "repository": {
