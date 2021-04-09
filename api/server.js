@@ -1,5 +1,6 @@
 const express = require('express');
 const server = express();
+const cors = require('cors');
 
 const {logger} = require('./middleware/middlewares');
 const actionsRouter = require("./actions/actions-router");
@@ -7,6 +8,7 @@ const projectsRouter = require("./projects/projects-router");
 
 server.use(express.json());
 server.use(logger);
+server.use(cors());
 
 server.use('/api/actions', actionsRouter);
 server.use('/api/projects', projectsRouter);
