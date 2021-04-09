@@ -2,7 +2,6 @@ const express = require("express");
 const Projects = require("./projects-model");
 const router = express.Router();
 
-//get
 router.get('/', (req, res, next) => {
     Projects.get()
         .then(projects => {
@@ -10,7 +9,7 @@ router.get('/', (req, res, next) => {
         })
         .catch(next)
 })
-//get /:id
+
 router.get('/:id', (req, res, next) => {
     const {id} = req.params
     Projects.get(id)
@@ -24,7 +23,7 @@ router.get('/:id', (req, res, next) => {
         .catch(next)
 
 })
-//post
+
 router.post('/', (req, res, next) => {
     const newPost = req.body
     if(!newPost.name || !newPost.description){
@@ -37,7 +36,7 @@ router.post('/', (req, res, next) => {
             .catch(next)
     }
 })
-//put /:id
+
 router.put('/:id', async (req, res, next) => {
     const {id} = req.params
     const changes = req.body
@@ -58,7 +57,7 @@ router.put('/:id', async (req, res, next) => {
         next(err)
     }
 })
-//delete /:id
+
 router.delete('/:id', async (req, res, next) => {  
     try{
         const {id} = req.params
@@ -73,7 +72,7 @@ router.delete('/:id', async (req, res, next) => {
         next(err)
     }
 })
-//[GET] /api/projects/:id/actions
+
 router.get('/:id/actions', async (req, res, next) => {
     try{
         const project = await Projects.get(req.params.id)

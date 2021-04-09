@@ -2,7 +2,6 @@ const express = require("express");
 const Actions = require("./actions-model");
 const router = express.Router();
 
-//Get
 router.get('/', (req, res, next) => {
     Actions.get()
         .then(actions => {
@@ -10,7 +9,7 @@ router.get('/', (req, res, next) => {
         })
         .catch(next)
 })
-//get /:id
+
 router.get('/:id', (req, res, next) => {
     const {id} = req.params
     Actions.get(id)
@@ -23,7 +22,7 @@ router.get('/:id', (req, res, next) => {
         })
         .catch(next)
 })
-//post
+
 router.post('/', (req, res, next) => {
     const newAction = req.body
     if(!newAction.description || !newAction.notes){
@@ -37,7 +36,6 @@ router.post('/', (req, res, next) => {
     }
 })
 
-//put /:id
 router.put('/:id', async (req, res, next) => {
     const {id} = req.params
     const changes = req.body
@@ -58,7 +56,6 @@ router.put('/:id', async (req, res, next) => {
     }
 })
 
-//delete /:id
 router.delete('/:id', async (req, res, next) => {
     try{
         const {id} = req.params
